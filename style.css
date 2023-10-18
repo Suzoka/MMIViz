@@ -1,0 +1,16 @@
+*,
+*::before,
+*::after{
+box-sizing: border-box;
+}
+
+body{  
+margin: 0;
+}
+
+svg {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5vw;
+    display: block;
+}
