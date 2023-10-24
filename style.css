@@ -3,10 +3,60 @@
 *::after{
 box-sizing: border-box;
 }
+:root{
+    --out: #7574A9;
+}
 
 body{  
 margin: 0;
+background-color: var(--out);
 }
+
+header{
+    position: relative;
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: bottom;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(180deg, rgba(104, 112, 114, 0) 40%, #687072 70%);
+    overflow: hidden;
+}
+.logo {
+    margin-top: 5vh;
+    width: 55vh;
+    height: 55vh;
+    background-image: url("sources/datavizlogo.png");
+    background-position: center; 
+    background-size: cover;   
+}
+.backstat {
+    position: absolute;
+    z-index: -1;
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+    height: 100vh;
+}
+.G{
+    width: 48vw;
+    height: 130vh;
+    background-image: url("sources/statG.png");
+    background-position: center;
+    background-size: cover;   
+
+}
+.D{
+    width: 48vw;
+    height: 130vh;
+    background-image: url("sources/statD.png");
+    background-position: center;
+    background-size: cover;   
+
+}
+
 
 svg {
     margin-right: auto;
