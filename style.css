@@ -9,8 +9,8 @@ margin: 0;
 }
 
 svg {
-    margin-right: auto;
-    margin-left: auto;
+    margin-left: 2vw;
+    margin-right: 5vw;
     margin-top: 5vh;
     display: block;
 }
