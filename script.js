@@ -45,5 +45,34 @@ fetch('data.json').then(function (response) {
             barre.style('opacity', 1);
         });
 
+        d3.select('svg')
+            .selectAll('g.graph>g')
+            .append('text')
+            .text((dataG, i) => 2015 + i)
+            .attr('transform', 'scale(0.8, -0.8)')
+            .attr('y', 12.5)
+            .attr('x', 2.25)
+
+        const valeur = d3.select('g.valeurs')
+            .selectAll('g')
+            .data(["1", "2", "3"])
+            .join('g')
+
+        valeur.append('line')
+            .attr('x1', -5)
+            .attr('x2', 300)
+            .attr('y1', data => data * (160 / 3))
+            .attr('y2', data => data * (160 / 3))
+            .attr('stroke', 'white')
+            .attr('stroke-width', 1)
+            .attr('stroke-dasharray', '5 5')
+            .attr('transform', 'scale(1, -1)')
+
+        valeur.append('text')
+            .text(data => data)
+            .attr('y', data => (data * (160 / 3) - 5)*-1)
+            .attr('x', -15)
+
+
     });
 });
