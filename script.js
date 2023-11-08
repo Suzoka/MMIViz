@@ -4,6 +4,7 @@ fetch('data.json').then(function (response) {
         graphique(gagnants);
 
         document.querySelector('select[name="trophy"]').addEventListener('change', function (event) {
+            console.log(data);
             gagnants = getGagnants(data, event.target.value);
             d3.select('g.graph').selectAll('*').remove();
             d3.select('g.valeurs').selectAll('*').remove();
@@ -21,14 +22,13 @@ function getGagnants(data, cas) {
         element.result.forEach((univ) => {
             valeur = 0;
             if (cas == 1) {
-                univ.charts.forEach(chart => {
-                    valeur += chart;
-                })
+                    valeur = univ.charts[0] + univ.charts[1] + univ.charts[2];
             }
             else {
                 valeur = univ.charts[0];
             }
             if (valeur == element.winner[cas]) {
+                univ.charts[4] = valeur;
                 gagnant.push(univ);
             }
         })
@@ -69,12 +69,12 @@ function graphique(gagnants) {
 
     barre.append('rect')
         .attr('width', (dataU, i, dataG) => (300 / 9 - 5) / dataG.length)
-        .attr('height', dataU => dataU.charts[0] * (160 / echelle.valeurs[cas].length))
+        .attr('height', dataU => dataU.charts[4] * (160 / echelle.valeurs[cas].length))
         .attr('fill', dataU => dataU.color);
 
     barre.append('circle')
         .attr('cx', (dataU, i, dataG) => (300 / 9 - 5) / dataG.length / 2)
-        .attr('cy', dataU => dataU.charts[0] * (160 / echelle.valeurs[cas].length))
+        .attr('cy', dataU => dataU.charts[4] * (160 / echelle.valeurs[cas].length))
         .attr('r', (dataU, i, dataG) => (300 / 9 - 5) / dataG.length / 2)
         .attr('fill', 'white');
 
