@@ -30,19 +30,28 @@
             </div>
             <p>Notre site de Data visualisation:<br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque excepturi quod at, recusandae sed hic, ut labore maxime saepe cupiditate similique asperiores, iste vel officiis dolor repellat placeat soluta distinctio! </p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque excepturi quod at, recusandae sed hic, ut labore maxime saepe cupiditate similique asperiores, iste vel officiis dolor repellat placeat soluta distinctio!</p>
-            <div style="border: solid white; rotate: 45deg; transform: translate(-50%, -50%); width:15vw ; height: 15vw;"></div>
+            <div style="border-bottom: solid white; border-right: solid white; rotate: 45deg; transform: translate(-50%, -50%); width:10vw ; height: 10vw; position: relative; left: 35vw;"></div>
         </section>
-        <section>
-            <svg viewbox="-5 -175 310 180" width="63.75vw" height="75vh" >
-                <defs>
-                    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="3" markerHeight="3" orient="auto">
-                        <path d="M 0 0 L 10 5 L 0 10 z" />
-                    </marker>
-                </defs>
-                <g class="graph"></g>
-                <line x1="0" y1="0" x2="302" y2="0" stroke="black" marker-end="url(#arrow)"></line>
-                <line x1="0" y1="0.5" x2="0" y2="-172" stroke="black" marker-end="url(#arrow)"></line>
-            </svg>
+        <section class="graphc">
+            <h2>MMI VIZ</h2>
+            <div class="flexbox">
+                <svg viewbox="-25 -185 330 210" width="63.75vw" height="75vh" >
+                    <defs>
+                        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="3" markerHeight="3" orient="auto">
+                            <path d="M 0 0 L 10 5 L 0 10 z" />
+                        </marker>
+                    </defs>
+                    <g class="valeurs"></g>
+                    <g class="graph"></g>
+                    <line x1="0" y1="0" x2="302" y2="0" stroke="black" marker-end="url(#arrow)"></line>
+                    <line x1="0" y1="0.5" x2="0" y2="-172" stroke="black" marker-end="url(#arrow)"></line>
+                </svg>
+                <section class="universite"></section>
+            </div>
+            <select name="trophy" id="trophy">
+                <option value="0" selected="selected">Première places</option>
+                <option value="1" >Podium</option>
+            </select>
             <script src="./d3.v7.min.js"></script>
             <script src="./script.js"></script>
         </section>
