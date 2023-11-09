@@ -125,7 +125,7 @@ function eventLegende(donnees) {
         univ.addEventListener('click', function (event) {
             d3.select('g.graph').selectAll('*').remove();
             d3.select('g.valeurs').selectAll('*').remove();
-            tracePodium(event.target.className, donnees);
+            tracePodium(event.target.className, JSON.parse(JSON.stringify(donnees)));
         });
     });
 }
