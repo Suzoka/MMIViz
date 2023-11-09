@@ -1,3 +1,9 @@
+/* 
+    font-family: 'Imprima', sans-serif;
+    font-family: 'Kavoon', serif;
+    font-family: 'Khula', sans-serif; 
+*/
+
 *,
 *::before,
 *::after{
@@ -56,7 +62,55 @@ header{
     background-size: cover;   
 
 }
-
+.blabla{
+    /* width: 100vw; */
+    height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, #687072 0%, #7574a97a 15%, #7574a97a 85%, #687072 100%), url("sources/fond1.png");
+    background-position: center;
+    background-size: 100%;
+    /* font-family: 'Kavoon', serif; */
+}
+.title{
+    text-align: center;
+    font-size: 4rem;
+    font-family: 'Kavoon', serif;
+    font-weight: 400;
+    mix-blend-mode: luminosity;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.norm{
+    color: #A473FF;
+    margin: 0%;
+    z-index: 1;
+}
+.ombre{
+    color: #4C35A3;
+    position: absolute;
+    left: -10px;
+    top: -3px;
+    margin: 0%;
+    z-index: 0;
+}
+p{
+    position: relative;
+    top: -20px;
+    left: -7vw;
+    font-size: 1.5rem;
+    font-family: 'Khula', sans-serif;
+    font-weight: 400;
+    margin: 0%;
+    /* margin-top: 2vh; */
+    margin-bottom: 2vh;
+    width: 70vw;
+    /* mix-blend-mode: luminosity; */
+}
 
 svg {
     margin-right: auto;
