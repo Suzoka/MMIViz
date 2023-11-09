@@ -11,17 +11,20 @@
 
 <body>
 
-    <svg viewbox="-25 -185 330 210" width="63.75vw" height="75vh" >
-        <defs>
-            <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="3" markerHeight="3" orient="auto">
-                <path d="M 0 0 L 10 5 L 0 10 z" />
-            </marker>
-        </defs>
-        <g class="valeurs"></g>
-        <g class="graph"></g>
-        <line x1="0" y1="0" x2="302" y2="0" stroke="black" marker-end="url(#arrow)"></line>
-        <line x1="0" y1="0.5" x2="0" y2="-172" stroke="black" marker-end="url(#arrow)"></line>
-    </svg>
+    <div class="flexbox">
+        <svg viewbox="-25 -185 330 210" width="63.75vw" height="75vh" >
+            <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="3" markerHeight="3" orient="auto">
+                    <path d="M 0 0 L 10 5 L 0 10 z" />
+                </marker>
+            </defs>
+            <g class="valeurs"></g>
+            <g class="graph"></g>
+            <line x1="0" y1="0" x2="302" y2="0" stroke="black" marker-end="url(#arrow)"></line>
+            <line x1="0" y1="0.5" x2="0" y2="-172" stroke="black" marker-end="url(#arrow)"></line>
+        </svg>
+        <section class="universite"></section>
+    </div>
 
     <select name="trophy" id="trophy">
         <option value="0" >Première places</option>

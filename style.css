@@ -9,8 +9,38 @@ margin: 0;
 }
 
 svg {
-    margin-left: 2vw;
-    margin-right: 5vw;
-    margin-top: 5vh;
     display: block;
+    background-color: #6e629d8c;
+}
+
+section.universite {
+    width: 21.25vw;
+    height: 75vh;
+    overflow-y: scroll;
+    background-color: #6e629d8c;
+}
+
+section.universite p {
+    width: fit-content;
+    margin-left: 30px;
+    margin-right: auto;
+}
+
+.universite p::before{
+    content: "";
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: var(--color);
+    display: inline-block;
+    position: relative;
+    left: -20px;
+    top: 2.5px;
+}
+
+.flexbox{
+    margin-top: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }

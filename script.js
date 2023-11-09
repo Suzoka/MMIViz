@@ -2,9 +2,9 @@ fetch('data.json').then(function (response) {
     response.json().then(function (data) {
         let gagnants = getGagnants(data, document.querySelector('select[name="trophy"]').value);
         graphique(gagnants);
+        legende(data);
 
         document.querySelector('select[name="trophy"]').addEventListener('change', function (event) {
-            console.log(data);
             gagnants = getGagnants(data, event.target.value);
             d3.select('g.graph').selectAll('*').remove();
             d3.select('g.valeurs').selectAll('*').remove();
@@ -22,7 +22,7 @@ function getGagnants(data, cas) {
         element.result.forEach((univ) => {
             valeur = 0;
             if (cas == 1) {
-                    valeur = univ.charts[0] + univ.charts[1] + univ.charts[2];
+                valeur = univ.charts[0] + univ.charts[1] + univ.charts[2];
             }
             else {
                 valeur = univ.charts[0];
@@ -40,20 +40,6 @@ function getGagnants(data, cas) {
 function graphique(gagnants) {
     const cas = document.querySelector('select[name="trophy"]').value;
     const echelle = { valeurs: [[1, 2, 3], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]] };
-    // let hauteur = 0;
-    // console.log(gagnants);
-    // if (cas == 1) {
-    //     gagnants.forEach(gagnant => {
-    //         gagnant[0].charts.forEach(chart => {
-    //             hauteur += chart;
-    //         })
-    //     });
-    // }
-    // else {
-    //     hauteur = univ.charts[0];
-    // }
-
-    d3.select('svg').style('background-color', 'rgba(110, 98, 157, 0.55)');
 
     const barre = d3.select('g.graph').selectAll('g')
         .data(gagnants)
@@ -113,5 +99,124 @@ function graphique(gagnants) {
     valeur.append('text')
         .text(data => data)
         .attr('y', data => (data * (160 / echelle.valeurs[cas].length) - 5) * -1)
-        .attr('x', -15)
+        .attr('x', -13)
+        .style('text-anchor', 'middle')
+}
+
+function legende(data) {
+    data[0].result.forEach((univ) => {
+        document.querySelector('section.universite').innerHTML += `<p class="${univ.university.replaceAll(' ', '').toLowerCase()}" style="  --color: ${univ.color};">${univ.university}</p>`;
+    });
+    eventLegende(data);
+}
+
+function eventLegende(donnees) {
+    document.querySelectorAll('section.universite p').forEach((univ) => {
+
+        univ.addEventListener('mouseenter', function (event) {
+            d3.selectAll('g.graph g').selectAll('g').transition().duration(500).style('opacity', 0.2);
+            d3.selectAll("g." + event.target.className).transition().duration(300).style('opacity', 1);
+        });
+
+        univ.addEventListener('mouseleave', function (event) {
+            d3.select('g.graph').selectAll('*').transition().duration(500).style('opacity', 1);
+        });
+
+        univ.addEventListener('click', function (event) {
+            d3.select('g.graph').selectAll('*').remove();
+            d3.select('g.valeurs').selectAll('*').remove();
+            tracePodium(event.target.className, donnees);
+        });
+    });
+}
+
+function tracePodium(univ, data) {
+    let podium = [];
+    data.forEach(function (annee) {
+        annee.result.forEach(function (resultat) {
+            if (resultat.university.replaceAll(' ', '').toLowerCase() == univ) {
+                podium.push(resultat);
+            }
+        });
+    })
+    const annee = d3.select('g.graph').selectAll('g')
+        .data(podium)
+        .join('g')
+        .attr('id', (dataA, i) => 2015 + i)
+        .attr('transform', (dataA, i) => `translate(${(5 + (300 / 9) * i)}, 0), scale(1, -1)`)
+        .attr('class', (dataU) => dataU.university.replaceAll(' ', '').toLowerCase());
+
+    // annee.append('line')
+    //     .attr('x1', -2.5)
+    //     .attr('x2', -2.5)
+    //     .attr('y1', 0)
+    //     .attr('y2', 160)
+    //     .attr('stroke', 'white')
+    //     .attr('stroke-width', 1.5)
+
+    const barrePodium = annee.selectAll('g')
+        .data(dataA => dataA.charts.splice(0, 3))
+        .join('g')
+        .attr('transform', (dataU, i) => `translate(${((300 / 9 - 5) / 3) * i}, 0)`);
+
+    barrePodium.append('rect')
+        .attr('width', (300 / 9 - 5) / 3)
+        .attr('height', dataU => dataU * (160 / 4)+2)
+        .attr('fill', (data, i) => {
+            switch (i) {
+                case 0:
+                    return 'gold';
+                case 1:
+                    return 'silver';
+                case 2:
+                    return 'coral';
+            }
+        });
+
+    barrePodium.append('circle')
+        .attr('cx', (dataU, i, dataG) => (300 / 9 - 5) / 6)
+        .attr('cy', dataU => dataU * (160 / 4))
+        .attr('r', (dataU, i, dataG) => (300 / 9 - 5) / 6)
+        .attr('fill', (data, i) => {
+            if (data == 0) {
+                return 'none';
+            }
+            switch (i) {
+                case 0:
+                    return 'gold';
+                case 1:
+                    return 'silver';
+                case 2:
+                    return 'coral';
+            }
+        })
+
+    d3.select('svg')
+        .selectAll('g.graph>g')
+        .append('text')
+        .text((dataG, i) => 2015 + i)
+        .attr('transform', 'scale(0.8, -0.8)')
+        .attr('y', 12.5)
+        .attr('x', 2.25)
+
+    const valeur = d3.select('g.valeurs')
+        .selectAll('g')
+        .data([1, 2, 3, 4])
+        .join('g')
+
+    valeur.append('line')
+        .attr('x1', -5)
+        .attr('x2', 300)
+        .attr('y1', data => data * (160 / 4))
+        .attr('y2', data => data * (160 / 4))
+        .attr('stroke', 'white')
+        .attr('stroke-width', 1)
+        .attr('stroke-dasharray', '5 5')
+        .attr('transform', 'scale(1, -1)')
+
+    valeur.append('text')
+        .text(data => data)
+        .attr('y', data => (data * (160 / 4) - 5) * -1)
+        .attr('x', -13)
+        .style('text-anchor', 'middle')
 }
