@@ -52,17 +52,21 @@ function graphique(gagnants) {
         .attr('class', dataU => dataU.university.replaceAll(' ', '').toLowerCase())
         .attr('transform', (dataU, i, dataG) => `translate(${((300 / 9 - 5) / dataG.length) * i}, 0)`);
 
-
     barre.append('rect')
         .attr('width', (dataU, i, dataG) => (300 / 9 - 5) / dataG.length)
-        .attr('height', dataU => dataU.charts[4] * (160 / echelle.valeurs[cas].length))
-        .attr('fill', dataU => dataU.color);
+        .attr('height', (dataU, i, dataG) => (300 / 9 - 5) / dataG.length / 2)
+        .attr('fill', dataU => dataU.color)
 
     barre.append('circle')
         .attr('cx', (dataU, i, dataG) => (300 / 9 - 5) / dataG.length / 2)
-        .attr('cy', dataU => dataU.charts[4] * (160 / echelle.valeurs[cas].length))
+        .attr('cy', (dataU, i, dataG) => (300 / 9 - 5) / dataG.length / 2)
         .attr('r', (dataU, i, dataG) => (300 / 9 - 5) / dataG.length / 2)
-        .attr('fill', 'white');
+        .attr('fill', 'white')
+
+    setTimeout(function () {
+        barre.select('rect').transition().duration(600).attr('height', dataU => dataU.charts[4] * (160 / echelle.valeurs[cas].length))
+        barre.select("circle").transition().duration(600).attr('cy', dataU => dataU.charts[4] * (160 / echelle.valeurs[cas].length))
+    }, 10);
 
     barre.on('mouseenter', function (event, dataU) {
         barre.transition().duration(500).style('opacity', 0.2);
@@ -146,13 +150,13 @@ function tracePodium(univ, data) {
         .attr('transform', (dataA, i) => `translate(${(5 + (300 / 9) * i)}, 0), scale(1, -1)`)
         .attr('class', (dataU) => dataU.university.replaceAll(' ', '').toLowerCase());
 
-    // annee.append('line')
-    //     .attr('x1', -2.5)
-    //     .attr('x2', -2.5)
-    //     .attr('y1', 0)
-    //     .attr('y2', 160)
-    //     .attr('stroke', 'white')
-    //     .attr('stroke-width', 1.5)
+    annee.append('line')
+        .attr('x1', -2.5)
+        .attr('x2', -2.5)
+        .attr('y1', 0)
+        .attr('y2', 160)
+        .attr('stroke', 'white')
+        .attr('stroke-width', 1.5)
 
     const barrePodium = annee.selectAll('g')
         .data(dataA => dataA.charts.splice(0, 3))
@@ -161,7 +165,7 @@ function tracePodium(univ, data) {
 
     barrePodium.append('rect')
         .attr('width', (300 / 9 - 5) / 3)
-        .attr('height', dataU => dataU * (160 / 4)+2)
+        .attr('height', dataU => dataU * (160 / 4) + 2)
         .attr('fill', (data, i) => {
             switch (i) {
                 case 0:
@@ -218,5 +222,13 @@ function tracePodium(univ, data) {
         .text(data => data)
         .attr('y', data => (data * (160 / 4) - 5) * -1)
         .attr('x', -13)
-        .style('text-anchor', 'middle')
+        .style('text-anchor', 'middle');
+
+    setTimeout(function () {
+        document.addEventListener('click', function (event) {
+            d3.select('g.graph').selectAll('g').selectAll('circle').remove()
+            d3.select('g.graph').selectAll('g').selectAll("rect").transition().duration(300).attr('height', 0).remove();
+        });
+    }, 300);
+
 }
