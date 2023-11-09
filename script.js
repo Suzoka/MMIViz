@@ -1,3 +1,5 @@
+let fn = null;
+
 fetch('data.json').then(function (response) {
     response.json().then(function (data) {
         let gagnants = getGagnants(data, document.querySelector('select[name="trophy"]').value);
@@ -6,9 +8,13 @@ fetch('data.json').then(function (response) {
 
         document.querySelector('select[name="trophy"]').addEventListener('change', function (event) {
             gagnants = getGagnants(data, event.target.value);
-            d3.select('g.graph').selectAll('*').remove();
-            d3.select('g.valeurs').selectAll('*').remove();
-            graphique(gagnants);
+            d3.select('g.graph').selectAll('g').selectAll('circle').remove()
+            d3.select('g.graph').selectAll('g').selectAll("rect").transition().duration(300).attr('height', 0).remove();
+            setTimeout(function () {
+                d3.select('g.graph').selectAll('g').remove();
+                d3.select('g.valeurs').selectAll('g').remove();
+                graphique(gagnants);
+            }, 300);
         });
     });
 });
@@ -127,15 +133,20 @@ function eventLegende(donnees) {
         });
 
         univ.addEventListener('click', function (event) {
-            d3.select('g.graph').selectAll('*').remove();
-            d3.select('g.valeurs').selectAll('*').remove();
-            tracePodium(event.target.className, JSON.parse(JSON.stringify(donnees)));
+            d3.select('g.graph').selectAll('g').selectAll('circle').remove()
+            d3.select('g.graph').selectAll('g').selectAll("rect").transition().duration(300).attr('height', 0).remove();
+            setTimeout(function () {
+                d3.select('g.graph').selectAll('g').remove();
+                d3.select('g.valeurs').selectAll('g').remove();
+                tracePodium(event.target.className, JSON.parse(JSON.stringify(donnees)));
+            }, 300);
         });
     });
 }
 
 function tracePodium(univ, data) {
     let podium = [];
+    const copydata = JSON.parse(JSON.stringify(data));
     data.forEach(function (annee) {
         annee.result.forEach(function (resultat) {
             if (resultat.university.replaceAll(' ', '').toLowerCase() == univ) {
@@ -165,7 +176,7 @@ function tracePodium(univ, data) {
 
     barrePodium.append('rect')
         .attr('width', (300 / 9 - 5) / 3)
-        .attr('height', dataU => dataU * (160 / 4) + 2)
+        .attr('height', 2)
         .attr('fill', (data, i) => {
             switch (i) {
                 case 0:
@@ -179,7 +190,7 @@ function tracePodium(univ, data) {
 
     barrePodium.append('circle')
         .attr('cx', (dataU, i, dataG) => (300 / 9 - 5) / 6)
-        .attr('cy', dataU => dataU * (160 / 4))
+        .attr('cy', (dataU, i, dataG) => (300 / 9 - 5) / 6)
         .attr('r', (dataU, i, dataG) => (300 / 9 - 5) / 6)
         .attr('fill', (data, i) => {
             if (data == 0) {
@@ -194,6 +205,11 @@ function tracePodium(univ, data) {
                     return 'coral';
             }
         })
+
+    setTimeout(function () {
+        barrePodium.select('rect').transition().duration(600).attr('height', dataU => dataU * (160 / 4) + 2);
+        barrePodium.select("circle").transition().duration(600).attr('cy', dataU => dataU * (160 / 4));
+    }, 10)
 
     d3.select('svg')
         .selectAll('g.graph>g')
@@ -225,10 +241,19 @@ function tracePodium(univ, data) {
         .style('text-anchor', 'middle');
 
     setTimeout(function () {
-        document.addEventListener('click', function (event) {
-            d3.select('g.graph').selectAll('g').selectAll('circle').remove()
-            d3.select('g.graph').selectAll('g').selectAll("rect").transition().duration(300).attr('height', 0).remove();
-        });
+        fn = () => resetGraph(copydata)
+        document.addEventListener('click', fn);
     }, 300);
+}
 
+function resetGraph(copydata) {
+    d3.select('g.graph').selectAll('g').selectAll('circle').remove()
+    d3.select('g.graph').selectAll('g').selectAll("rect").transition().duration(300).attr('height', 0).remove();
+    setTimeout(function () {
+        d3.select('g.graph').selectAll('g').remove();
+        d3.select('g.valeurs').selectAll('g').remove();
+        graphique(getGagnants(copydata, document.querySelector('select[name="trophy"]').value));
+        document.removeEventListener('click', fn);
+        fn = null;
+    }, 300);
 }
