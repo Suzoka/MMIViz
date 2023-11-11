@@ -16,7 +16,7 @@ box-sizing: border-box;
 body{ 
     /* position: fixed; */
     /* height: 100vh; */
-    width: 100vw;
+    /* width: 100vw; */
     /* overflow-y: scroll; */
     padding: 0;
     margin: 0;
@@ -112,9 +112,9 @@ main{
     margin: 0%;
     z-index: 0;
 }
-p{
+.blabla p{
     position: relative;
-    top: -20px;
+    top: -70px;
     left: -7vw;
     font-size: 1.5rem;
     font-family: 'Khula', sans-serif;
@@ -129,32 +129,42 @@ p{
 .graphc{
     height: 100vh;
     background: linear-gradient(180deg, #A2678A00 0%, #A2678A 20%,#A2678A 80%, #E19898 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
     overflow-y: hidden;
-    scroll-snap-align: center;
+    overflow-x: hidden;
+    /* scroll-snap-align: center; */
 }
 /* #F6ABFF, #72FFDD */
 
 .graphc h2{
+    position: absolute;
+    z-index: 0;
+    /* width: 300vw; */
+    text-align: center;
     font-family: 'Kavoon', serif;
     font-weight: 400;
     margin: 0;
-    font-size: 9rem;
-    text-align: center;
-    color: rgb(0, 0, 0);
-    text-shadow: 2px 0 #ffffff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+    /* font-size: 6rem; */
+    font-size: 40vh;
+    color: #E19898;
+    /* text-shadow: 2px 0 #4D3C77, -2px 0 #4D3C77, 0 2px #fff, 0 -2px #fff, 1px 1px #4D3C77, -1px -1px #fff, 1px -1px #4D3C77, -1px 1px #fff; */
+    text-shadow: 4px 0 #3F1D38, -4px 0 #3F1D38, 0 4px #3F1D38, 0 -4px #3F1D38, 4px 4px #3F1D38, -4px -4px #3F1D38, 4px -4px #3F1D38, -4px 4px #3F1D38;
     /* border: solid pink; */
 }
 
 svg {
     display: block;
-    background-color: #6e629d8c;
+    background-color: #4D3C778c;
 }
 
 section.universite {
     width: 21.25vw;
     height: 75vh;
     overflow-y: scroll;
-    background-color: #6e629d8c;
+    background-color: #4D3C778c;
 }
 
 section.universite p {
@@ -178,6 +188,21 @@ section.universite p {
 .flexbox{
     /* margin-top: 5vh; */
     display: flex;
+    position: relative;
+    z-index: 3;
     align-items: center;
     justify-content: space-evenly;
+    width: 100vw;
+    /* border: solid #3F1D38; */
+}
+
+select{
+    background-color: #4D3C778c;
+    color: white;
+    border: none;
+    /* font-family: 'Kavoon', serif; */
+    font-size: 1.5rem;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
 }
