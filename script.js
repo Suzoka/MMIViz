@@ -145,10 +145,11 @@ function eventLegende(donnees) {
 }
 
 function tracePodium(univ, data) {
+    console.log(data);
     let podium = [];
     const copydata = JSON.parse(JSON.stringify(data));
-    data.forEach(function (annee) {
-        annee.result.forEach(function (resultat) {
+    data.forEach(function (anneeData) {
+        anneeData.result.forEach(function (resultat) {
             if (resultat.university.replaceAll(' ', '').toLowerCase() == univ) {
                 podium.push(resultat);
             }
@@ -241,19 +242,29 @@ function tracePodium(univ, data) {
         .style('text-anchor', 'middle');
 
     setTimeout(function () {
-        fn = () => resetGraph(copydata)
-        document.addEventListener('click', fn);
+        fn = () => resetGraph(copydata, event);
+        document.querySelector('body').addEventListener('click', fn);
     }, 300);
 }
 
-function resetGraph(copydata) {
-    d3.select('g.graph').selectAll('g').selectAll('circle').remove()
-    d3.select('g.graph').selectAll('g').selectAll("rect").transition().duration(300).attr('height', 0).remove();
-    setTimeout(function () {
-        d3.select('g.graph').selectAll('g').remove();
-        d3.select('g.valeurs').selectAll('g').remove();
-        graphique(getGagnants(copydata, document.querySelector('select[name="trophy"]').value));
-        document.removeEventListener('click', fn);
-        fn = null;
-    }, 300);
+function resetGraph(copydata, e) {
+    if (e.target.tagName != "P") {
+        d3.select('g.graph').selectAll('g').selectAll('circle').remove()
+        d3.select('g.graph').selectAll('g').selectAll("rect").transition().duration(300).attr('height', 0).remove();
+        setTimeout(function () {
+            d3.select('g.graph').selectAll('g').remove();
+            d3.select('g.valeurs').selectAll('g').remove();
+            graphique(getGagnants(copydata, document.querySelector('select[name="trophy"]').value));
+            document.querySelector('body').removeEventListener('click', fn);
+            setTimeout(function () {
+                fn = null;
+            },50);
+        }, 300);
+    }
+    else{
+        document.querySelector('body').removeEventListener('click', fn);
+        setTimeout(function () {
+            fn = null;
+        },50);
+    }
 }
