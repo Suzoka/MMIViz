@@ -12,16 +12,21 @@ box-sizing: border-box;
 :root{
     --out: #A2678A;
 }
-
-body{ 
-    /* position: fixed; */
-    /* height: 100vh; */
-    /* width: 100vw; */
-    /* overflow-y: scroll; */
+body{
     padding: 0;
     margin: 0;
+    /* z-index: -20; */
     background-color: #E19898;
-    /* scroll-snap-type: y mandatory; */
+
+
+}
+.body{ 
+    /* position: fixed; */
+    height: 100vh;
+    /* z-index: -20; */
+    /* width: 100vw; */
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
 }
 
 header{
@@ -42,7 +47,13 @@ main{
     /* scroll-snap-type: y mandatory; */
     height: 200vh;
     background-color: #A2678A;
+    /* background-image: linear-gradient(180deg, #A2678A 0%,#A2678A 60%, #e1989800 100%); */
+    overflow-y: scroll;
+    height: 100vh;
 }
+main::-webkit-scrollbar {
+    display: none;
+  }
 .logo {
     margin-top: 5vh;
     width: 55vh;
@@ -64,8 +75,7 @@ main{
     height: 130vh;
     background-image: url("sources/statG.png");
     background-position: center;
-    background-size: cover;   
-
+    background-size: cover;
 }
 .D{
     width: 48vw;
@@ -114,7 +124,7 @@ main{
 }
 .blabla p{
     position: relative;
-    top: -70px;
+    /* top: -40px; */
     left: -7vw;
     font-size: 1.5rem;
     font-family: 'Khula', sans-serif;
@@ -128,7 +138,7 @@ main{
 
 .graphc{
     height: 100vh;
-    background: linear-gradient(180deg, #A2678A00 0%, #A2678A 20%,#A2678A 80%, #E19898 100%);
+    background: linear-gradient(180deg, #A2678A00 0%, #A2678A 20%,#A2678A 80%, #e1989800 100%);
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -205,4 +215,14 @@ select{
     font-weight: 400;
     padding: 0;
     margin: 0;
+}
+footer{
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    top: -75vh;
+    z-index: -1;
+    background-color: #3F1D38;
+    height: 150vh;
+    overflow: hidden;
 }
