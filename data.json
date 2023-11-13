@@ -3,23 +3,8 @@
         "year": 2015,
         "result":[
             {
-                "university":"Champs sur marne", 
-                "color":"#0B7368",
-                "charts":[0,0,0]
-            },
-            {
                 "university":"Angoulême", 
                 "color":"#026686",
-                "charts":[0,0,0]
-            },
-            {
-                "university":"Velizy", 
-                "color":"#69043B",
-                "charts":[0,0,0]
-            },
-            {
-                "university":"Mulhouse", 
-                "color":"#00AEEF",
                 "charts":[0,0,0]
             },
             {
@@ -28,8 +13,13 @@
                 "charts":[0,0,0]
             },
             {
-                "university":"Laval", 
-                "color":"#E6007E",
+                "university":"Bordeaux Montaigne", 
+                "color":"#0E273B",
+                "charts":[0,0,0]
+            },
+            {
+                "university":"Castres", 
+                "color":"#e40613",
                 "charts":[0,0,0]
             },
             {
@@ -38,8 +28,33 @@
                 "charts":[1,0,0]
             },
             {
-                "university":"St Lô", 
-                "color":"#CFA600",
+                "university":"Champs sur marne", 
+                "color":"#0B7368",
+                "charts":[0,0,0]
+            },
+            {
+                "university":"Corte", 
+                "color":"#F58220",
+                "charts":[0,0,0]
+            },
+            {
+                "university":"Elbeuf", 
+                "color":"#BC464A",
+                "charts":[1,0,0]
+            },
+            {
+                "university":"Grenoble", 
+                "color":"#E84E0F",
+                "charts":[0,0,0]
+            },
+            {
+                "university":"Haguenau", 
+                "color":"#8A1981",
+                "charts":[0,0,0]
+            },
+            {
+                "university":"Laval", 
+                "color":"#E6007E",
                 "charts":[0,0,0]
             },
             {
@@ -53,58 +68,8 @@
                 "charts":[0,0,0]
             },
             {
-                "university":"Toulon", 
-                "color":"#652586",
-                "charts":[0,0,0]
-            },
-            {
-                "university":"Castres", 
-                "color":"#e40613",
-                "charts":[0,0,0]
-            },
-            {
-                "university":"Nancy", 
-                "color":"#FFEF1B",
-                "charts":[0,0,0]
-            },
-            {
-                "university":"Tarbes", 
-                "color":"#FF5761",
-                "charts":[0,0,0]
-            },
-            {
-                "university":"Sarcelles", 
-                "color":"#F6D108",
-                "charts":[0,0,0]
-            },
-            {
-                "university":"Saint-Dié-Des-Vosges", 
-                "color":"#AD1E1D",
-                "charts":[1,0,0]
-            },
-            {
-                "university":"Elbeuf", 
-                "color":"#BC464A",
-                "charts":[1,0,0]
-            },
-            {
-                "university":"Haguenau", 
-                "color":"#8A1981",
-                "charts":[0,0,0]
-            },
-            {
                 "university":"Limoges", 
                 "color":"#7BACCA",
-                "charts":[0,0,0]
-            },
-            {
-                "university":"Sénart Fontainebleau", 
-                "color":"#BDDC04",
-                "charts":[0,0,0]
-            },
-            {
-                "university":"Troyes", 
-                "color":"#F9B000",
                 "charts":[0,0,0]
             },
             {
@@ -113,8 +78,18 @@
                 "charts":[0,0,0]
             },
             {
-                "university":"Bordeaux Montaigne", 
-                "color":"#0E273B",
+                "university":"Montbéliard", 
+                "color":"#06D7B1",
+                "charts":[0,0,0]
+            },
+            {
+                "university":"Mulhouse", 
+                "color":"#00AEEF",
+                "charts":[0,0,0]
+            },
+            {
+                "university":"Nancy", 
+                "color":"#FFEF1B",
                 "charts":[0,0,0]
             },
             {
@@ -123,20 +98,45 @@
                 "charts":[0,0,0]
             },
             {
-                "university":"Montbéliard", 
-                "color":"#06D7B1",
+                "university":"Saint-Dié-Des-Vosges", 
+                "color":"#AD1E1D",
+                "charts":[1,0,0]
+            },
+            {
+                "university":"Sarcelles", 
+                "color":"#F6D108",
                 "charts":[0,0,0]
             },
             {
-                "university":"Grenoble", 
-                "color":"#E84E0F",
+                "university":"Sénart Fontainebleau", 
+                "color":"#BDDC04",
                 "charts":[0,0,0]
             },
             {
-                "university":"Corte", 
-                "color":"#F58220",
+                "university":"St Lô", 
+                "color":"#CFA600",
                 "charts":[0,0,0]
-            }
+            },
+            {
+                "university":"Tarbes", 
+                "color":"#FF5761",
+                "charts":[0,0,0]
+            },
+            {
+                "university":"Toulon", 
+                "color":"#652586",
+                "charts":[0,0,0]
+            },
+            {
+                "university":"Troyes", 
+                "color":"#F9B000",
+                "charts":[0,0,0]
+            },
+            {
+                "university":"Velizy", 
+                "color":"#69043B",
+                "charts":[0,0,0]
+            }            
         ],
         "winner":[2,2]
     },

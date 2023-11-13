@@ -1,3 +1,6 @@
+let fn = null;
+let podiumFlag = false;
+
 fetch('data.json').then(function (response) {
     response.json().then(function (data) {
         let gagnants = getGagnants(data, document.querySelector('select[name="trophy"]').value);
@@ -6,9 +9,13 @@ fetch('data.json').then(function (response) {
 
         document.querySelector('select[name="trophy"]').addEventListener('change', function (event) {
             gagnants = getGagnants(data, event.target.value);
-            d3.select('g.graph').selectAll('*').remove();
-            d3.select('g.valeurs').selectAll('*').remove();
-            graphique(gagnants);
+            d3.select('g.graph').selectAll('g').selectAll('circle').remove()
+            d3.select('g.graph').selectAll('g').selectAll("rect").transition().duration(300).attr('height', 0).remove();
+            setTimeout(function () {
+                d3.select('g.graph').selectAll('g').remove();
+                d3.select('g.valeurs').selectAll('g').remove();
+                graphique(gagnants);
+            }, 300);
         });
     });
 });
@@ -52,17 +59,21 @@ function graphique(gagnants) {
         .attr('class', dataU => dataU.university.replaceAll(' ', '').toLowerCase())
         .attr('transform', (dataU, i, dataG) => `translate(${((300 / 9 - 5) / dataG.length) * i}, 0)`);
 
-
     barre.append('rect')
         .attr('width', (dataU, i, dataG) => (300 / 9 - 5) / dataG.length)
-        .attr('height', dataU => dataU.charts[4] * (160 / echelle.valeurs[cas].length))
-        .attr('fill', dataU => dataU.color);
+        .attr('height', (dataU, i, dataG) => (300 / 9 - 5) / dataG.length / 2)
+        .attr('fill', dataU => dataU.color)
 
     barre.append('circle')
         .attr('cx', (dataU, i, dataG) => (300 / 9 - 5) / dataG.length / 2)
-        .attr('cy', dataU => dataU.charts[4] * (160 / echelle.valeurs[cas].length))
+        .attr('cy', (dataU, i, dataG) => (300 / 9 - 5) / dataG.length / 2)
         .attr('r', (dataU, i, dataG) => (300 / 9 - 5) / dataG.length / 2)
-        .attr('fill', 'white');
+        .attr('fill', 'white')
+
+    setTimeout(function () {
+        barre.select('rect').transition().duration(600).attr('height', dataU => dataU.charts[4] * (160 / echelle.valeurs[cas].length))
+        barre.select("circle").transition().duration(600).attr('cy', dataU => dataU.charts[4] * (160 / echelle.valeurs[cas].length))
+    }, 10);
 
     barre.on('mouseenter', function (event, dataU) {
         barre.transition().duration(500).style('opacity', 0.2);
@@ -114,8 +125,10 @@ function eventLegende(donnees) {
     document.querySelectorAll('section.universite p').forEach((univ) => {
 
         univ.addEventListener('mouseenter', function (event) {
-            d3.selectAll('g.graph g').selectAll('g').transition().duration(500).style('opacity', 0.2);
-            d3.selectAll("g." + event.target.className).transition().duration(300).style('opacity', 1);
+            if (!podiumFlag) {
+                d3.selectAll('g.graph g').selectAll('g').transition().duration(500).style('opacity', 0.2);
+                d3.selectAll("g." + event.target.className).transition().duration(300).style('opacity', 1);
+            }
         });
 
         univ.addEventListener('mouseleave', function (event) {
@@ -123,17 +136,23 @@ function eventLegende(donnees) {
         });
 
         univ.addEventListener('click', function (event) {
-            d3.select('g.graph').selectAll('*').remove();
-            d3.select('g.valeurs').selectAll('*').remove();
-            tracePodium(event.target.className, JSON.parse(JSON.stringify(donnees)));
+            d3.select('g.graph').selectAll('g').selectAll('circle').remove()
+            d3.select('g.graph').selectAll('g').selectAll("rect").transition().duration(300).attr('height', 0).remove();
+            setTimeout(function () {
+                d3.select('g.graph').selectAll('g').remove();
+                d3.select('g.valeurs').selectAll('g').remove();
+                tracePodium(event.target.className, JSON.parse(JSON.stringify(donnees)));
+            }, 300);
         });
     });
 }
 
 function tracePodium(univ, data) {
+    podiumFlag = true;
     let podium = [];
-    data.forEach(function (annee) {
-        annee.result.forEach(function (resultat) {
+    const copydata = JSON.parse(JSON.stringify(data));
+    data.forEach(function (anneeData) {
+        anneeData.result.forEach(function (resultat) {
             if (resultat.university.replaceAll(' ', '').toLowerCase() == univ) {
                 podium.push(resultat);
             }
@@ -146,13 +165,13 @@ function tracePodium(univ, data) {
         .attr('transform', (dataA, i) => `translate(${(5 + (300 / 9) * i)}, 0), scale(1, -1)`)
         .attr('class', (dataU) => dataU.university.replaceAll(' ', '').toLowerCase());
 
-    // annee.append('line')
-    //     .attr('x1', -2.5)
-    //     .attr('x2', -2.5)
-    //     .attr('y1', 0)
-    //     .attr('y2', 160)
-    //     .attr('stroke', 'white')
-    //     .attr('stroke-width', 1.5)
+    annee.append('line')
+        .attr('x1', -2.5)
+        .attr('x2', -2.5)
+        .attr('y1', 0)
+        .attr('y2', 160)
+        .attr('stroke', 'white')
+        .attr('stroke-width', 1.5)
 
     const barrePodium = annee.selectAll('g')
         .data(dataA => dataA.charts.splice(0, 3))
@@ -161,7 +180,7 @@ function tracePodium(univ, data) {
 
     barrePodium.append('rect')
         .attr('width', (300 / 9 - 5) / 3)
-        .attr('height', dataU => dataU * (160 / 4)+2)
+        .attr('height', 2)
         .attr('fill', (data, i) => {
             switch (i) {
                 case 0:
@@ -175,7 +194,7 @@ function tracePodium(univ, data) {
 
     barrePodium.append('circle')
         .attr('cx', (dataU, i, dataG) => (300 / 9 - 5) / 6)
-        .attr('cy', dataU => dataU * (160 / 4))
+        .attr('cy', (dataU, i, dataG) => (300 / 9 - 5) / 6)
         .attr('r', (dataU, i, dataG) => (300 / 9 - 5) / 6)
         .attr('fill', (data, i) => {
             if (data == 0) {
@@ -190,6 +209,11 @@ function tracePodium(univ, data) {
                     return 'coral';
             }
         })
+
+    setTimeout(function () {
+        barrePodium.select('rect').transition().duration(600).attr('height', dataU => dataU * (160 / 4) + 2);
+        barrePodium.select("circle").transition().duration(600).attr('cy', dataU => dataU * (160 / 4));
+    }, 10)
 
     d3.select('svg')
         .selectAll('g.graph>g')
@@ -218,5 +242,33 @@ function tracePodium(univ, data) {
         .text(data => data)
         .attr('y', data => (data * (160 / 4) - 5) * -1)
         .attr('x', -13)
-        .style('text-anchor', 'middle')
+        .style('text-anchor', 'middle');
+
+    setTimeout(function () {
+        fn = () => resetGraph(copydata, event);
+        document.querySelector('body').addEventListener('click', fn);
+    }, 300);
+}
+
+function resetGraph(copydata, e) {
+    if (e.target.tagName != "P") {
+        d3.select('g.graph').selectAll('g').selectAll('circle').remove()
+        d3.select('g.graph').selectAll('g').selectAll("rect").transition().duration(300).attr('height', 0).remove();
+        setTimeout(function () {
+            d3.select('g.graph').selectAll('g').remove();
+            d3.select('g.valeurs').selectAll('g').remove();
+            graphique(getGagnants(copydata, document.querySelector('select[name="trophy"]').value));
+            document.querySelector('body').removeEventListener('click', fn);
+            podiumFlag = false;
+            setTimeout(function () {
+                fn = null;
+            }, 50);
+        }, 300);
+    }
+    else {
+        document.querySelector('body').removeEventListener('click', fn);
+        setTimeout(function () {
+            fn = null;
+        }, 50);
+    }
 }

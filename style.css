@@ -28,14 +28,19 @@ section.universite p {
 
 .universite p::before{
     content: "";
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     background-color: var(--color);
     display: inline-block;
     position: relative;
     left: -20px;
-    top: 2.5px;
+    top: 5px;
+    padding: 5px;
+}
+
+.universite p:hover{
+    cursor: pointer;
 }
 
 .flexbox{
