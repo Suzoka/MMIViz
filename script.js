@@ -1,4 +1,5 @@
 let fn = null;
+let podiumFlag = false;
 
 fetch('data.json').then(function (response) {
     response.json().then(function (data) {
@@ -124,8 +125,10 @@ function eventLegende(donnees) {
     document.querySelectorAll('section.universite p').forEach((univ) => {
 
         univ.addEventListener('mouseenter', function (event) {
-            d3.selectAll('g.graph g').selectAll('g').transition().duration(500).style('opacity', 0.2);
-            d3.selectAll("g." + event.target.className).transition().duration(300).style('opacity', 1);
+            if (!podiumFlag) {
+                d3.selectAll('g.graph g').selectAll('g').transition().duration(500).style('opacity', 0.2);
+                d3.selectAll("g." + event.target.className).transition().duration(300).style('opacity', 1);
+            }
         });
 
         univ.addEventListener('mouseleave', function (event) {
@@ -145,7 +148,7 @@ function eventLegende(donnees) {
 }
 
 function tracePodium(univ, data) {
-    console.log(data);
+    podiumFlag = true;
     let podium = [];
     const copydata = JSON.parse(JSON.stringify(data));
     data.forEach(function (anneeData) {
@@ -256,15 +259,16 @@ function resetGraph(copydata, e) {
             d3.select('g.valeurs').selectAll('g').remove();
             graphique(getGagnants(copydata, document.querySelector('select[name="trophy"]').value));
             document.querySelector('body').removeEventListener('click', fn);
+            podiumFlag = false;
             setTimeout(function () {
                 fn = null;
-            },50);
+            }, 50);
         }, 300);
     }
-    else{
+    else {
         document.querySelector('body').removeEventListener('click', fn);
         setTimeout(function () {
             fn = null;
-        },50);
+        }, 50);
     }
 }
