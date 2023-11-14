@@ -28,6 +28,9 @@ body{
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
 }
+.body::-webkit-scrollbar {
+    display: none;
+  }
 
 header{
     scroll-snap-align: center;
@@ -51,9 +54,7 @@ main{
     overflow-y: scroll;
     height: 100vh;
 }
-main::-webkit-scrollbar {
-    display: none;
-  }
+
 .logo {
     margin-top: 5vh;
     width: 55vh;
@@ -220,9 +221,17 @@ footer{
     display: flex;
     justify-content: space-around;
     position: relative;
-    top: -75vh;
+    top: -80vh;
     z-index: -1;
     background-color: #3F1D38;
-    height: 150vh;
+    height: 155vh;
     overflow: hidden;
 }
+    .gradient{
+        position: absolute;
+        width: 100vw;
+        height: 155vh;
+        background: linear-gradient(180deg, #a2678a 60%, #a2678a00 100%);
+        background-position: center;
+        background-size: 100%;
+    }
