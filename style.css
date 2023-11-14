@@ -15,16 +15,11 @@ box-sizing: border-box;
 body{
     padding: 0;
     margin: 0;
-    /* z-index: -20; */
     background-color: #E19898;
-
-
 }
+
 .body{ 
-    /* position: fixed; */
     height: 100vh;
-    /* z-index: -20; */
-    /* width: 100vw; */
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
 }
@@ -45,16 +40,13 @@ header{
     background: linear-gradient(180deg, rgba(104, 112, 114, 0) 40%, #A2678A 80%);
     overflow: hidden;
 }
+
 main{
-    /* scroll-snap-align: start; */
-    /* scroll-snap-type: y mandatory; */
     height: 200vh;
     background-color: #A2678A;
-    /* background-image: linear-gradient(180deg, #A2678A 0%,#A2678A 60%, #e1989800 100%); */
     overflow-y: scroll;
     height: 100vh;
 }
-
 .logo {
     margin-top: 5vh;
     width: 55vh;
@@ -84,11 +76,8 @@ main{
     background-image: url("sources/statD.png");
     background-position: center;
     background-size: cover;   
-
 }
 .blabla{
-    /* width: 100vw; */
-    /* scroll-snap-align: center; */
     height: 100vh;
     color: white;
     display: flex;
@@ -98,7 +87,6 @@ main{
     background: linear-gradient(180deg, #A2678A 0%, #A2678A7a 10%, #A2678A7a 85%, #A2678A 100%), url("sources/fond1.png");
     background-position: center;
     background-size: 100%;
-    /* font-family: 'Kavoon', serif; */
 }
 .title{
     text-align: center;
@@ -125,18 +113,14 @@ main{
 }
 .blabla p{
     position: relative;
-    /* top: -40px; */
     left: -7vw;
     font-size: 1.5rem;
     font-family: 'Khula', sans-serif;
     font-weight: 400;
     margin: 0%;
-    /* margin-top: 2vh; */
     margin-bottom: 2vh;
     width: 70vw;
-    /* mix-blend-mode: luminosity; */
 }
-
 .graphc{
     height: 100vh;
     background: linear-gradient(180deg, #A2678A00 0%, #A2678A 20%,#A2678A 80%, #e1989800 100%);
@@ -146,24 +130,17 @@ main{
     align-items: center;
     overflow-y: hidden;
     overflow-x: hidden;
-    /* scroll-snap-align: center; */
 }
-/* #F6ABFF, #72FFDD */
-
 .graphc h2{
     position: absolute;
     z-index: 0;
-    /* width: 300vw; */
     text-align: center;
     font-family: 'Kavoon', serif;
     font-weight: 400;
     margin: 0;
-    /* font-size: 6rem; */
     font-size: 40vh;
     color: #E19898;
-    /* text-shadow: 2px 0 #4D3C77, -2px 0 #4D3C77, 0 2px #fff, 0 -2px #fff, 1px 1px #4D3C77, -1px -1px #fff, 1px -1px #4D3C77, -1px 1px #fff; */
     text-shadow: 4px 0 #3F1D38, -4px 0 #3F1D38, 0 4px #3F1D38, 0 -4px #3F1D38, 4px 4px #3F1D38, -4px -4px #3F1D38, 4px -4px #3F1D38, -4px 4px #3F1D38;
-    /* border: solid pink; */
 }
 
 svg {
@@ -197,21 +174,18 @@ section.universite p {
 }
 
 .flexbox{
-    /* margin-top: 5vh; */
     display: flex;
     position: relative;
     z-index: 3;
     align-items: center;
     justify-content: space-evenly;
     width: 100vw;
-    /* border: solid #3F1D38; */
 }
 
 select{
     background-color: #4D3C778c;
     color: white;
     border: none;
-    /* font-family: 'Kavoon', serif; */
     font-size: 1.5rem;
     font-weight: 400;
     padding: 0;
@@ -227,11 +201,11 @@ footer{
     height: 155vh;
     overflow: hidden;
 }
-    .gradient{
-        position: absolute;
-        width: 100vw;
-        height: 155vh;
-        background: linear-gradient(180deg, #a2678a 60%, #a2678a00 100%);
-        background-position: center;
-        background-size: 100%;
-    }
+.gradient{
+    position: absolute;
+    width: 100vw;
+    height: 155vh;
+    background: linear-gradient(180deg, #a2678a 60%, #a2678a00 100%);
+    background-position: center;
+    background-size: 100%;
+}
