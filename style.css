@@ -1,23 +1,159 @@
+/* 
+    font-family: 'Imprima', sans-serif;
+    font-family: 'Kavoon', serif;
+    font-family: 'Khula', sans-serif; 
+*/
+
 *,
 *::before,
 *::after{
 box-sizing: border-box;
 }
+:root{
+    --out: #A2678A;
+}
+body{
+    padding: 0;
+    margin: 0;
+    background-color: #E19898;
+}
 
-body{  
-margin: 0;
+.body{ 
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+.body::-webkit-scrollbar {
+    display: none;
+  }
+
+header{
+    scroll-snap-align: center;
+    position: relative;
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: bottom;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(180deg, rgba(104, 112, 114, 0) 40%, #A2678A 80%);
+    overflow: hidden;
+}
+
+main{
+    height: 200vh;
+    background-color: #A2678A;
+    overflow-y: scroll;
+    height: 100vh;
+}
+.logo {
+    margin-top: 5vh;
+    width: 55vh;
+    height: 55vh;
+    background-image: url("sources/datavizlogo.png");
+    background-position: center; 
+    background-size: cover;   
+}
+.backstat {
+    position: absolute;
+    z-index: -1;
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+    height: 100vh;
+}
+.G{
+    width: 48vw;
+    height: 130vh;
+    background-image: url("sources/statG.png");
+    background-position: center;
+    background-size: cover;
+}
+.D{
+    width: 48vw;
+    height: 130vh;
+    background-image: url("sources/statD.png");
+    background-position: center;
+    background-size: cover;   
+}
+.blabla{
+    height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, #A2678A 0%, #A2678A7a 10%, #A2678A7a 85%, #A2678A 100%), url("sources/fond1.png");
+    background-position: center;
+    background-size: 100%;
+}
+.title{
+    text-align: center;
+    font-size: 5rem;
+    font-family: 'Kavoon', serif;
+    font-weight: 400;
+    mix-blend-mode: luminosity;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.norm{
+    color: #A473FF;
+    margin: 0%;
+    z-index: 1;
+}
+.ombre{
+    color: #4C35A3;
+    position: absolute;
+    left: -10px;
+    top: -3px;
+    margin: 0%;
+    z-index: 0;
+}
+.blabla p{
+    position: relative;
+    left: -7vw;
+    font-size: 1.5rem;
+    font-family: 'Khula', sans-serif;
+    font-weight: 400;
+    margin: 0%;
+    margin-bottom: 2vh;
+    width: 70vw;
+}
+.graphc{
+    height: 100vh;
+    background: linear-gradient(180deg, #A2678A00 0%, #A2678A 20%,#A2678A 80%, #e1989800 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.graphc h2{
+    position: absolute;
+    z-index: 0;
+    text-align: center;
+    font-family: 'Kavoon', serif;
+    font-weight: 400;
+    margin: 0;
+    font-size: 40vh;
+    color: #E19898;
+    text-shadow: 4px 0 #3F1D38, -4px 0 #3F1D38, 0 4px #3F1D38, 0 -4px #3F1D38, 4px 4px #3F1D38, -4px -4px #3F1D38, 4px -4px #3F1D38, -4px 4px #3F1D38;
 }
 
 svg {
     display: block;
-    background-color: #6e629d8c;
+    background-color: #4D3C778c;
+
 }
 
 section.universite {
     width: 21.25vw;
     height: 75vh;
     overflow-y: scroll;
-    background-color: #6e629d8c;
+    background-color: #4D3C778c;
 }
 
 section.universite p {
@@ -28,6 +164,7 @@ section.universite p {
 
 .universite p::before{
     content: "";
+
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -35,17 +172,42 @@ section.universite p {
     display: inline-block;
     position: relative;
     left: -20px;
-    top: 5px;
-    padding: 5px;
-}
-
-.universite p:hover{
-    cursor: pointer;
+    top: 2.5px;
 }
 
 .flexbox{
-    margin-top: 5vh;
     display: flex;
+    position: relative;
+    z-index: 3;
     align-items: center;
     justify-content: space-evenly;
+    width: 100vw;
+}
+
+select{
+    background-color: #4D3C778c;
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+}
+footer{
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    top: -80vh;
+    z-index: -1;
+    background-color: #3F1D38;
+    height: 155vh;
+    overflow: hidden;
+}
+.gradient{
+    position: absolute;
+    width: 100vw;
+    height: 155vh;
+    background: linear-gradient(180deg, #a2678a 60%, #a2678a00 100%);
+    background-position: center;
+    background-size: 100%;
 }
