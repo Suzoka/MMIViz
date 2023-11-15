@@ -217,6 +217,15 @@ function tracePodium(univ, data) {
             }
         })
 
+    console.log(annee)
+    annee.on('mouseenter', function (event) {
+        infoBulle(event, barrePodium);
+    });
+
+    annee.on('mouseleave', function () {
+        infoBulle();
+    });
+
     setTimeout(function () {
         barrePodium.select('rect').transition().duration(600).attr('height', dataU => dataU * (160 / 4) + 2);
         barrePodium.select("circle").transition().duration(600).attr('cy', dataU => dataU * (160 / 4));
@@ -291,10 +300,10 @@ function infoBulle(event, infos) {
         infoBulle.classList.add('infoBulle');
         document.body.appendChild(infoBulle);
     }
-
     var bulle = document.querySelector('.infoBulle')
+    if (!infos) { bulle.onmousemove = ''; bulle.style.display = 'none'; return }
 
-    if (infos) {
+    if (!podiumFlag) {
         bulle.innerHTML = "<h3>" + infos.university + "</h3><p>Année : " + event.toElement.parentElement.id + "</p>" + getTexte(infos) + "</p>";
         bulle.style.display = 'block'
         event.currentTarget.onmousemove = function (event) {
@@ -302,9 +311,43 @@ function infoBulle(event, infos) {
             bulle.style.left = event.clientX + 13 + 'px'
         }
     }
-    else { bulle.onmousemove = ''; bulle.style.display = 'none' }
+    else {
+        bulle.innerHTML = "<h3>" + infos._parents[0].__data__.university + "</h3><p>Année : " + event.target.id + "</p>" + getTexte(infos) + "</p>";
+        bulle.style.display = 'block'
+        event.currentTarget.onmousemove = function (event) {
+            bulle.style.top = event.clientY - 20 + 'px'
+            bulle.style.left = event.clientX + 13 + 'px'
+        }
+    }
 
     function getTexte(infos) {
+        // console.log(infos._groups[event.target.id-2015])
+        if (podiumFlag) {
+            let first;
+            let second;
+            let third;
+
+            if (infos._groups[event.target.id - 2015][0].__data__ == 1) {
+                first = "première place";
+            }
+            else {
+                first = "premières places";
+            }
+            if (infos._groups[event.target.id - 2015][1].__data__ == 1) {
+                second = "deuxième place";
+            }
+            else {
+                second = "deuxièmes places";
+            }
+            if (infos._groups[event.target.id - 2015][2].__data__ == 1) {
+                third = "troisième place";
+            }
+            else {
+                third = "troisièmes places";
+            }
+
+            return ("Cette année, l'université à remportée : <ul><li><span class=\"bold\">" + infos._groups[event.target.id - 2015][0].__data__ + "</span> " + first + "</li><li><span class=\"bold\">" + infos._groups[event.target.id - 2015][1].__data__ + "</span> " + second + "</li><li><span class=\"bold\">" + infos._groups[event.target.id - 2015][2].__data__ + "</span> " + third + "</li></ul>")
+        }
         if (document.querySelector('select[name="trophy"]').value == 0) {
             if (infos.charts[0] == 1) { return ("L'université à remportée <span class=\"bold\">" + infos.charts[0] + "</span> première place") }
             else {
