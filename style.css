@@ -38,6 +38,15 @@ header{
     scroll-snap-align: start;
 }
 
+.fleche{
+    border-bottom: solid white;
+    border-right: solid white;
+    rotate: 45deg;
+    transform: translate(-50%, -50%);
+    width: 7vw;
+    height: 7vw;
+}
+
 main{
     background-color: #A2678A;
     /* overflow-y: scroll; */
@@ -233,13 +242,4 @@ footer{
 
 footer .G, footer .D {
     height: 155vh
-}
-
-.fleche{
-    border-bottom: solid white;
-    border-right: solid white;
-    rotate: 45deg;
-    transform: translate(-50%, -50%);
-    width: 7vw;
-    height: 7vw;
 }
