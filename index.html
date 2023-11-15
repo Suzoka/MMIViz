@@ -1,86 +1,92 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MMI VIZ</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Imprima&family=Kavoon&family=Khula:wght@600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body>
-    <header>
-      <div class="logo"></div>
-      <div class="backstat">
-        <div class="G"></div>
-        <div class="D"></div>
-      </div>
-      <h1>Welcome<br />to</h1>
-      <a href="#explain"> <div class="fleche"></div></a>
-    </header>
-    <main>
-      <section class="blabla" id="explain">
-        <div class="title">
-          <h2 class="ombre">MMI<br />VIZ</h2>
-          <h2 class="norm">MMI<br />VIZ</h2>
-        </div>
-        <p>
-          Votre site de visualisation du festival MMI :<br />Sur ce site, vous pourrez visualiser quel est la ou les université.s à avoir gagné le plus de trophées au cours du festival MMI depuis 2015.
-        </p>
-        <p>
-          Vous pouvez également, en cliquant sur le nom des universités dans le menu de droite, voir le détail des trophées qu'ils ont gagnés, pour chaque années, ainsi que le détail du classement du trophé (1er, 2ème ou 3ème).
-        </p>
-        <a href="#graph"><div class="fleche droite"></div></a>
-      </section>
-      <section class="graphc" id="graph">
-        <div>
-            <h2>STATS</h2>
-            <div class="flexbox">
-                <svg viewbox="-25 -185 330 210" width="63.75vw" height="75vh" >
-                    <defs>
-                        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="3" markerHeight="3" orient="auto">
-                            <path d="M 0 0 L 10 5 L 0 10 z" />
-                        </marker>
-                    </defs>
-                    <g class="valeurs"></g>
-                    <g class="graph"></g>
-                    <line x1="0" y1="0" x2="302" y2="0" stroke="black" marker-end="url(#arrow)"></line>
-                    <line x1="0" y1="0.5" x2="0" y2="-172" stroke="black" marker-end="url(#arrow)"></line>
-                </svg>
-                <section class="universite"></section>
-            </div>
-            <select name="trophy" id="trophy">
-                <option value="0" selected="selected">Première places</option>
-                <option value="1" >Podium</option>
-            </select>
-        </div>
-    </section>
-    </main>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MMI VIZ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Imprima&family=Kavoon&family=Khula:wght@600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-    <footer>
-      <div></div>
-      <div class="gradient"></div>
+<body>
+  <header>
+    <div class="logo"></div>
+    <div class="backstat">
       <div class="G"></div>
       <div class="D"></div>
-    </footer>
-
-    <div class="popup">
-      <div class="contentPopup">
-        <h2>Attention, il est possible que le site ne fonctionne pas correctement.</h2>
-        <p>Ce site n'a pas été développé pour fonctionner avec une définition inférieur à 1024 pixels. Il est donc
-          possible qu'il ne fonctionne pas correctement. Nous vous conseillons d'agrandir la fenêtre si vous êtes sur
-          ordinateur, ou alors d'utiliser le site sur depuis un ordinateur si vous êtes sur mobile ou tablette.</p>
-        <button class="btnPopup">Visiter quand même le site</button>
-      </div>
     </div>
+    <h1>Welcome<br />to</h1>
+    <a href="#explain">
+      <div class="fleche"></div>
+    </a>
+  </header>
+  <main>
+    <section class="blabla" id="explain">
+      <div class="title">
+        <h2 class="ombre">MMI<br />VIZ</h2>
+        <h2 class="norm">MMI<br />VIZ</h2>
+      </div>
+      <p>
+        Votre site de visualisation du festival MMI :<br />Sur ce site, vous pourrez visualiser quel est la ou les
+        université.s à avoir gagné le plus de trophées au cours du festival MMI depuis 2015.
+      </p>
+      <p>
+        Vous pouvez également, en cliquant sur le nom des universités dans le menu de droite, voir le détail des
+        trophées qu'ils ont gagnés, pour chaque années, ainsi que le détail du classement du trophé (1er, 2ème ou 3ème).
+      </p>
+      <a href="#graph">
+        <div class="fleche droite"></div>
+      </a>
+    </section>
+    <section class="graphc" id="graph">
+      <div>
+        <h2>STATS</h2>
+        <div class="flexbox">
+          <svg viewbox="-25 -185 330 210" width="63.75vw" height="75vh">
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="3" markerHeight="3" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z" />
+              </marker>
+            </defs>
+            <g class="valeurs"></g>
+            <g class="graph"></g>
+            <line x1="0" y1="0" x2="302" y2="0" stroke="black" marker-end="url(#arrow)"></line>
+            <line x1="0" y1="0.5" x2="0" y2="-172" stroke="black" marker-end="url(#arrow)"></line>
+          </svg>
+          <section class="universite"></section>
+        </div>
+        <select name="trophy" id="trophy">
+          <option value="0" selected="selected">Première places</option>
+          <option value="1">Podium</option>
+        </select>
+      </div>
+    </section>
+  </main>
 
-    <script src="./d3.v7.min.js"></script>
-    <script src="./script.js"></script>
-  </body>
+  <footer>
+    <div></div>
+    <div class="gradient"></div>
+    <div class="G"></div>
+    <div class="D"></div>
+  </footer>
+
+  <div class="popup">
+    <div class="contentPopup">
+      <h2>Attention, il est possible que le site ne fonctionne pas correctement.</h2>
+      <p>Ce site n'a pas été développé pour fonctionner avec une définition inférieur à 1024 pixels. Il est donc
+        possible qu'il ne fonctionne pas correctement. Nous vous conseillons d'agrandir la fenêtre si vous êtes sur
+        ordinateur, ou alors d'utiliser le site sur depuis un ordinateur si vous êtes sur mobile ou tablette.</p>
+      <button class="btnPopup">Visiter quand même le site</button>
+    </div>
+  </div>
+
+  <script src="./d3.v7.min.js"></script>
+  <script src="./script.js"></script>
+</body>
+
 </html>
