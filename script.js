@@ -56,7 +56,7 @@ function graphique(gagnants) {
         .selectAll('g')
         .data(dataG => dataG)
         .join('g')
-        .attr('class', dataU => dataU.university.replaceAll(' ', '').toLowerCase())
+        .attr('class', dataU => dataU.university.replaceAll(' ', '').replaceAll('é','e').replaceAll('ê','e').replaceAll('ô','o').toLowerCase())
         .attr('transform', (dataU, i, dataG) => `translate(${((300 / 9 - 5) / dataG.length) * i}, 0)`);
 
     barre.append('rect')
@@ -78,7 +78,7 @@ function graphique(gagnants) {
 
     barre.on('mouseenter', function (event, dataU) {
         barre.transition().duration(500).style('opacity', 0.2);
-        d3.selectAll("g." + dataU.university.replaceAll(' ', '').toLowerCase()).transition().duration(300).style('opacity', 1);
+        d3.selectAll("g." + dataU.university.replaceAll(' ', '').replaceAll('é','e').replaceAll('ê','e').replaceAll('ô','o').toLowerCase()).transition().duration(300).style('opacity', 1);
     });
 
     barre.on('mouseleave', function (event, dataU) {
@@ -117,7 +117,7 @@ function graphique(gagnants) {
 
 function legende(data) {
     data[0].result.forEach((univ) => {
-        document.querySelector('section.universite').innerHTML += `<p class="${univ.university.replaceAll(' ', '').toLowerCase()}" style="  --color: ${univ.color};">${univ.university}</p>`;
+        document.querySelector('section.universite').innerHTML += `<p class="${univ.university.replaceAll(' ', '').replaceAll('é','e').replaceAll('ê','e').replaceAll('ô','o').toLowerCase()}" style="  --color: ${univ.color};">${univ.university}</p>`;
     });
     eventLegende(data);
 }
@@ -156,7 +156,7 @@ function tracePodium(univ, data) {
     const copydata = JSON.parse(JSON.stringify(data));
     data.forEach(function (anneeData) {
         anneeData.result.forEach(function (resultat) {
-            if (resultat.university.replaceAll(' ', '').toLowerCase() == univ) {
+            if (resultat.university.replaceAll(' ', '').replaceAll('é','e').replaceAll('ê','e').replaceAll('ô','o').toLowerCase() == univ) {
                 podium.push(resultat);
             }
         });
@@ -166,7 +166,7 @@ function tracePodium(univ, data) {
         .join('g')
         .attr('id', (dataA, i) => 2015 + i)
         .attr('transform', (dataA, i) => `translate(${(5 + (300 / 9) * i)}, 0), scale(1, -1)`)
-        .attr('class', (dataU) => dataU.university.replaceAll(' ', '').toLowerCase());
+        .attr('class', (dataU) => dataU.university.replaceAll(' ', '').replaceAll('é','e').replaceAll('ê','e').replaceAll('ô','o').toLowerCase());
 
     annee.append('line')
         .attr('x1', -2.5)
