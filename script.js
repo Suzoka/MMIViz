@@ -37,7 +37,7 @@ function getGagnants(data, cas) {
                 valeur = univ.charts[0];
             }
             if (valeur == element.winner[cas]) {
-                univ.charts[4] = valeur;
+                univ.charts[3] = valeur;
                 gagnant.push(univ);
             }
         })
@@ -58,7 +58,7 @@ function graphique(gagnants) {
         .selectAll('g')
         .data(dataG => dataG)
         .join('g')
-        .attr('class', dataU => dataU.university.replaceAll(' ', '').replaceAll('é','e').replaceAll('ê','e').replaceAll('ô','o').toLowerCase())
+        .attr('class', dataU => dataU.university.replaceAll(' ', '').replaceAll('é', 'e').replaceAll('ê', 'e').replaceAll('ô', 'o').toLowerCase())
         .attr('transform', (dataU, i, dataG) => `translate(${((300 / 9 - 5) / dataG.length) * i}, 0)`);
 
     barre.append('rect')
@@ -73,18 +73,20 @@ function graphique(gagnants) {
         .attr('fill', 'white')
 
     setTimeout(function () {
-        barre.select('rect').transition().duration(600).attr('height', dataU => dataU.charts[4] * (160 / echelle.valeurs[cas].length))
-        barre.select("circle").transition().duration(600).attr('cy', dataU => dataU.charts[4] * (160 / echelle.valeurs[cas].length))
-        setTimeout(function () {podiumFlag = false;},600)
+        barre.select('rect').transition().duration(600).attr('height', dataU => dataU.charts[3] * (160 / echelle.valeurs[cas].length))
+        barre.select("circle").transition().duration(600).attr('cy', dataU => dataU.charts[3] * (160 / echelle.valeurs[cas].length))
+        setTimeout(function () { podiumFlag = false; }, 600)
     }, 10);
 
     barre.on('mouseenter', function (event, dataU) {
         barre.transition().duration(500).style('opacity', 0.2);
-        d3.selectAll("g." + dataU.university.replaceAll(' ', '').replaceAll('é','e').replaceAll('ê','e').replaceAll('ô','o').toLowerCase()).transition().duration(300).style('opacity', 1);
+        d3.selectAll("g." + dataU.university.replaceAll(' ', '').replaceAll('é', 'e').replaceAll('ê', 'e').replaceAll('ô', 'o').toLowerCase()).transition().duration(300).style('opacity', 1);
+        infoBulle(event, dataU);
     });
 
     barre.on('mouseleave', function (event, dataU) {
         barre.transition().duration(500).style('opacity', 1);
+        infoBulle();
     });
 
     d3.select('svg')
@@ -119,7 +121,7 @@ function graphique(gagnants) {
 
 function legende(data) {
     data[0].result.forEach((univ) => {
-        document.querySelector('section.universite').innerHTML += `<p class="${univ.university.replaceAll(' ', '').replaceAll('é','e').replaceAll('ê','e').replaceAll('ô','o').toLowerCase()}" style="  --color: ${univ.color};">${univ.university}</p>`;
+        document.querySelector('section.universite').innerHTML += `<p class="${univ.university.replaceAll(' ', '').replaceAll('é', 'e').replaceAll('ê', 'e').replaceAll('ô', 'o').toLowerCase()}" style="  --color: ${univ.color};">${univ.university}</p>`;
     });
     eventLegende(data);
 }
@@ -158,7 +160,7 @@ function tracePodium(univ, data) {
     const copydata = JSON.parse(JSON.stringify(data));
     data.forEach(function (anneeData) {
         anneeData.result.forEach(function (resultat) {
-            if (resultat.university.replaceAll(' ', '').replaceAll('é','e').replaceAll('ê','e').replaceAll('ô','o').toLowerCase() == univ) {
+            if (resultat.university.replaceAll(' ', '').replaceAll('é', 'e').replaceAll('ê', 'e').replaceAll('ô', 'o').toLowerCase() == univ) {
                 podium.push(resultat);
             }
         });
@@ -168,7 +170,7 @@ function tracePodium(univ, data) {
         .join('g')
         .attr('id', (dataA, i) => 2015 + i)
         .attr('transform', (dataA, i) => `translate(${(5 + (300 / 9) * i)}, 0), scale(1, -1)`)
-        .attr('class', (dataU) => dataU.university.replaceAll(' ', '').replaceAll('é','e').replaceAll('ê','e').replaceAll('ô','o').toLowerCase());
+        .attr('class', (dataU) => dataU.university.replaceAll(' ', '').replaceAll('é', 'e').replaceAll('ê', 'e').replaceAll('ô', 'o').toLowerCase());
 
     annee.append('line')
         .attr('x1', -2.5)
@@ -277,9 +279,44 @@ function resetGraph(copydata, e) {
     }
 }
 
-function popup (){
+function popup() {
     document.querySelector('.btnPopup').addEventListener('click', function (event) {
         document.querySelector('.popup').style.display = 'none';
     });
-  }
-  
+}
+
+function infoBulle(event, infos) {
+    if (!document.querySelector('.infoBulle')) {
+        var infoBulle = document.createElement('div');
+        infoBulle.classList.add('infoBulle');
+        document.body.appendChild(infoBulle);
+    }
+
+    var bulle = document.querySelector('.infoBulle')
+
+    if (infos) {
+        bulle.innerHTML = "<h3>" + infos.university + "</h3><p>Année : " + event.toElement.parentElement.id + "</p>" + getTexte(infos) + "</p>";
+        bulle.style.display = 'block'
+        event.currentTarget.onmousemove = function (event) {
+            bulle.style.top = event.clientY - 20 + 'px'
+            bulle.style.left = event.clientX + 13 + 'px'
+        }
+    }
+    else { bulle.onmousemove = ''; bulle.style.display = 'none' }
+
+    function getTexte(infos) {
+        if (document.querySelector('select[name="trophy"]').value == 0) {
+            if (infos.charts[0] == 1) { return ("L'université à remportée <span class=\"bold\">" + infos.charts[0] + "</span> première place") }
+            else {
+                return ("L'université à remportée <span class=\"bold\">" + infos.charts[0] + "</span> premières places")
+            }
+        }
+        else {
+            const valeur = infos.charts[0] + infos.charts[1] + infos.charts[2];
+            if (valeur == 1) { return ("L'université à remportée <span class=\"bold\">" + valeur + "</span> trophée toutes places confondues") }
+            else {
+                return ("L'université à remportée <span class=\"bold\">" + valeur + "</span> trophées toutes places confondues")
+            }
+        }
+    }
+}
