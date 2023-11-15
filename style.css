@@ -12,20 +12,16 @@ box-sizing: border-box;
 :root{
     --out: #A2678A;
 }
-body{
-    padding: 0;
-    margin: 0;
+html{
     background-color: #E19898;
-}
-
-.body{ 
-    height: 100vh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
 }
-.body::-webkit-scrollbar {
-    display: none;
-  }
+
+body{
+    margin: 0;
+}
 
 header{
     scroll-snap-align: center;
@@ -42,10 +38,9 @@ header{
 }
 
 main{
-    height: 200vh;
     background-color: #A2678A;
-    overflow-y: scroll;
-    height: 100vh;
+    /* overflow-y: scroll; */
+    /* height: 100vh; */
 }
 .logo {
     margin-top: 5vh;
