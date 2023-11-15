@@ -243,3 +243,41 @@ footer{
 footer .G, footer .D {
     height: 155vh
 }
+
+  .popup {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.813);
+  }
+  
+  .popup h2{
+    text-align: center;
+    margin-top: 0;
+  }
+  
+  .contentPopup {
+    margin: auto;
+    margin-top: 45%;
+    transform: translateY(-50%);
+    width: 50%;
+    background-color: #201e20;
+    padding: 50px 25px;
+    border-radius: 25px;
+  }
+  
+  .btnPopup{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  @media screen and (max-width : 1024px){
+    .popup{
+        display: block;
+    }
+  }
