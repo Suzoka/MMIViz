@@ -73,6 +73,7 @@ function graphique(gagnants) {
     setTimeout(function () {
         barre.select('rect').transition().duration(600).attr('height', dataU => dataU.charts[4] * (160 / echelle.valeurs[cas].length))
         barre.select("circle").transition().duration(600).attr('cy', dataU => dataU.charts[4] * (160 / echelle.valeurs[cas].length))
+        setTimeout(function () {podiumFlag = false;},600)
     }, 10);
 
     barre.on('mouseenter', function (event, dataU) {
@@ -132,7 +133,9 @@ function eventLegende(donnees) {
         });
 
         univ.addEventListener('mouseleave', function (event) {
-            d3.select('g.graph').selectAll('*').transition().duration(500).style('opacity', 1);
+            if (!podiumFlag) {
+                d3.select('g.graph').selectAll('*').transition().duration(500).style('opacity', 1);
+            }
         });
 
         univ.addEventListener('click', function (event) {
@@ -259,7 +262,6 @@ function resetGraph(copydata, e) {
             d3.select('g.valeurs').selectAll('g').remove();
             graphique(getGagnants(copydata, document.querySelector('select[name="trophy"]').value));
             document.querySelector('body').removeEventListener('click', fn);
-            podiumFlag = false;
             setTimeout(function () {
                 fn = null;
             }, 50);
