@@ -1,81 +1,138 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MMI VIZ</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Imprima&family=Kavoon&family=Khula:wght@600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body>
-    <header>
-      <div class="logo"></div>
-      <div class="backstat">
-        <div class="G"></div>
-        <div class="D"></div>
-      </div>
-      <h1>Welcome<br />to</h1>
-      <a href="#explain"> <div class="fleche"></div></a>
-    </header>
-    <main>
-      <section class="blabla" id="explain">
-        <div class="title">
-          <h2 class="ombre">MMI<br />VIZ</h2>
-          <h2 class="norm">MMI<br />VIZ</h2>
-        </div>
-        <p>
-          Notre site de Data visualisation:<br />Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Itaque excepturi quod at, recusandae sed
-          hic, ut labore maxime saepe cupiditate similique asperiores, iste vel
-          officiis dolor repellat placeat soluta distinctio!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
-          excepturi quod at, recusandae sed hic, ut labore maxime saepe
-          cupiditate similique asperiores, iste vel officiis dolor repellat
-          placeat soluta distinctio!
-        </p>
-        <div class="fleche droite"></div>
-      </section>
-      <section class="graphc">
-        <div>
-            <h2>STATS</h2>
-            <div class="flexbox">
-                <svg viewbox="-25 -185 330 210" width="63.75vw" height="75vh" >
-                    <defs>
-                        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="3" markerHeight="3" orient="auto">
-                            <path d="M 0 0 L 10 5 L 0 10 z" />
-                        </marker>
-                    </defs>
-                    <g class="valeurs"></g>
-                    <g class="graph"></g>
-                    <line x1="0" y1="0" x2="302" y2="0" stroke="black" marker-end="url(#arrow)"></line>
-                    <line x1="0" y1="0.5" x2="0" y2="-172" stroke="black" marker-end="url(#arrow)"></line>
-                </svg>
-                <section class="universite"></section>
-            </div>
-            <select name="trophy" id="trophy">
-                <option value="0" selected="selected">Première places</option>
-                <option value="1" >Podium</option>
-            </select>
-        </div>
-    </section>
-    </main>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MMI VIZ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Imprima&family=Kavoon&family=Khula:wght@600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="./sources/favicon.png">
+</head>
 
-    <footer>
-      <div></div>
-      <div class="gradient"></div>
+<body>
+  <header>
+    <div class="logo"></div>
+    <div class="backstat">
       <div class="G"></div>
       <div class="D"></div>
-    </footer>
-    <script src="./d3.v7.min.js"></script>
-    <script src="./script.js"></script>
-  </body>
+    </div>
+    <h1>Welcome<br />to</h1>
+    <a href="#explain">
+      <div class="fleche"></div>
+    </a>
+  </header>
+  <main>
+    <section class="blabla" id="explain">
+      <div class="title">
+        <h2 class="ombre">MMI<br />VIZ</h2>
+        <h2 class="norm">MMI<br />VIZ</h2>
+      </div>
+      <p>
+        Votre site de visualisation du festival MMI :<br />Sur ce site, vous pourrez visualiser quel est la ou les
+        université.s à avoir gagné le plus de trophées au cours du festival MMI depuis 2015.
+      </p>
+      <p>
+        Vous pouvez également, en cliquant sur le nom des universités dans le menu de droite, voir le détail des
+        trophées qu'ils ont gagnés, pour chaque années, ainsi que le détail du classement du trophé (1er, 2ème ou 3ème).
+      </p>
+      <a href="#graph">
+        <div class="fleche droite"></div>
+      </a>
+    </section>
+    <section class="graphc" id="graph">
+      <div>
+        <h2>STATS</h2>
+        <div class="flexbox">
+          <svg viewbox="-25 -185 330 210" width="63.75vw" height="75vh">
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="3" markerHeight="3" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z" />
+              </marker>
+            </defs>
+            <g class="valeurs"></g>
+            <g class="graph"></g>
+            <line x1="0" y1="0" x2="302" y2="0" stroke="black" marker-end="url(#arrow)"></line>
+            <line x1="0" y1="0.5" x2="0" y2="-172" stroke="black" marker-end="url(#arrow)"></line>
+          </svg>
+          <section class="universite"></section>
+        </div>
+        <select name="trophy" id="trophy">
+          <option value="0" selected="selected">Première places</option>
+          <option value="1">Podium</option>
+        </select>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div></div>
+    <div class="gradient"></div>
+    <div class="G"></div>
+    <div class="D"></div>
+    <div class="content">
+      <h2>Mentions légales</h2>
+      <div class="colonnes">
+        <p>Ce site à été créée et édité par Morgan ZARKA (morgan.zarka@edu.univ-eiffel.fr) et Waldi FIAGA
+          (waldi.fiaga@edu.univ-eiffel.fr).
+          <br><br>
+          Il est hébergé sur les serveurs de GitHub, via l’outil GitHub pages (PRIUS BERNHARDPLEIN 200 99135 PAYS BAS)
+          <br><br>
+          Dans la création de ce site, Waldi.F a travaillé sur le design et le développement front.
+          Morgan.Z a travaillé sur le développement front et back.
+          <br><br>
+          Le jeu de donnée a été créée par nous même, mais voici les sources :
+        <ul>
+          <li><a href="https://2023.festivalmmi.fr/laureats.276_dcp.html">Source des données de 2023</a></li>
+          <li><a href="https://festival2022.iutmmi.fr/laureats.276_dcp.html">Source des données de 2022</a></li>
+          <li><a href="https://www.youtube.com/watch?v=VrPx1opuGQM">Source des données de 2021</a></li>
+          <li><a href="https://iutmmi.fr/festival_subdomain/palmares/">Source des données de 2020</a></li>
+          <li><a href="https://www.youtube.com/watch?v=EC69l2z3_Ug">Source des données de 2019</a></li>
+          <li><a href="https://www.youtube.com/watch?v=25I2G2m4asA">Source des données de 2018</a></li>
+          <li><a href="https://iutmmi.fr/le-festival-mmi/">Source des données de 2015 à 2017</a></li>
+        </ul>
+        </p>
+        <p>Voici les sources des différentes images utilisées :
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+        </p>
+
+        <p>Le présent site ne traitant aucune données personnalisés, le RGPD ne s'applique pas</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="popup">
+    <div class="contentPopup">
+      <h2>Attention, il est possible que le site ne fonctionne pas correctement.</h2>
+      <p>Ce site n'a pas été développé pour fonctionner avec une définition inférieur à 1024 pixels. Il est donc
+        possible qu'il ne fonctionne pas correctement. Nous vous conseillons d'agrandir la fenêtre si vous êtes sur
+        ordinateur, ou alors d'utiliser le site sur depuis un ordinateur si vous êtes sur mobile ou tablette.</p>
+      <button class="btnPopup">Visiter quand même le site</button>
+    </div>
+  </div>
+
+  <script src="./d3.v7.min.js"></script>
+  <script src="./script.js"></script>
+</body>
+
 </html>

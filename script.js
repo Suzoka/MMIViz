@@ -3,6 +3,8 @@ let podiumFlag = false;
 
 fetch('data.json').then(function (response) {
     response.json().then(function (data) {
+        popup();
+
         let gagnants = getGagnants(data, document.querySelector('select[name="trophy"]').value);
         graphique(gagnants);
         legende(data);
@@ -274,3 +276,10 @@ function resetGraph(copydata, e) {
         }, 50);
     }
 }
+
+function popup (){
+    document.querySelector('.btnPopup').addEventListener('click', function (event) {
+        document.querySelector('.popup').style.display = 'none';
+    });
+  }
+  
