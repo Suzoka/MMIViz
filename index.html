@@ -15,138 +15,66 @@
   </head>
 
   <body>
-      <header style="scroll-snap-align: start">
-        <div class="logo"></div>
-        <div class="backstat">
-          <div class="G"></div>
-          <div class="D"></div>
+    <header>
+      <div class="logo"></div>
+      <div class="backstat">
+        <div class="G"></div>
+        <div class="D"></div>
+      </div>
+      <h1>Welcome<br />to</h1>
+      <a href="#explain"> <div class="fleche"></div></a>
+    </header>
+    <main>
+      <section class="blabla" id="explain">
+        <div class="title">
+          <h2 class="ombre">MMI<br />VIZ</h2>
+          <h2 class="norm">MMI<br />VIZ</h2>
         </div>
-        <h1>Welcome<br />to</h1>
-        <a href="#explain"
-          ><div
-            style="
-              border-bottom: solid white;
-              border-right: solid white;
-              rotate: 45deg;
-              transform: translate(-50%, -50%);
-              width: 7vw;
-              height: 7vw;
-            "
-          ></div
-        ></a>
-      </header>
-<main>
-    
-          <section class="blabla" id="explain" style="scroll-snap-align: start">
-            <div class="title">
-              <h2 class="ombre">MMI<br />VIZ</h2>
-              <h2 class="norm">MMI<br />VIZ</h2>
-            </div>
-            <p>
-              Notre site de Data visualisation:<br />Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Itaque excepturi quod at, recusandae sed
-              hic, ut labore maxime saepe cupiditate similique asperiores, iste vel
-              officiis dolor repellat placeat soluta distinctio!
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
-              excepturi quod at, recusandae sed hic, ut labore maxime saepe
-              cupiditate similique asperiores, iste vel officiis dolor repellat
-              placeat soluta distinctio!
-            </p>
-            <div
-              style="
-                border-bottom: solid white;
-                border-right: solid white;
-                rotate: 45deg;
-                transform: translate(-50%, -50%);
-                width: 10vw;
-                height: 10vw;
-                position: relative;
-                left: 35vw;
-              "
-            ></div>
-          </section>
-          <section class="graphc" style="scroll-snap-align: start">
-            <div
-              style="
-                position: relative;
-                width: 95vw;
-                height: 90vh;
-                background: linear-gradient(
-                    #9d6a6a 0%,
-                    #4d3c7700 25%,
-                    #4d3c7700 75%,
-                    #9d6a6a 100%
-                  ),
-                  linear-gradient(
-                    90deg,
-                    #9d6a6a 0%,
-                    #e19898 25%,
-                    #e19898 75%,
-                    #9d6a6a 100%
-                  );
-                border: 20px #3f1d38 solid;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                display: flex;
-                overflow: hidden;
-              "
-            >
-              <h2>STATS</h2>
-              <div class="flexbox">
-                <svg viewbox="-25 -185 330 210" width="63.75vw" height="75vh">
-                  <defs>
-                    <marker
-                      id="arrow"
-                      viewBox="0 0 10 10"
-                      refX="5"
-                      refY="5"
-                      markerWidth="3"
-                      markerHeight="3"
-                      orient="auto"
-                    >
-                      <path d="M 0 0 L 10 5 L 0 10 z" />
-                    </marker>
-                  </defs>
-                  <g class="valeurs"></g>
-                  <g class="graph"></g>
-                  <line
-                    x1="0"
-                    y1="0"
-                    x2="302"
-                    y2="0"
-                    stroke="black"
-                    marker-end="url(#arrow)"
-                  ></line>
-                  <line
-                    x1="0"
-                    y1="0.5"
-                    x2="0"
-                    y2="-172"
-                    stroke="black"
-                    marker-end="url(#arrow)"
-                  ></line>
+        <p>
+          Notre site de Data visualisation:<br />Lorem ipsum dolor sit amet
+          consectetur adipisicing elit. Itaque excepturi quod at, recusandae sed
+          hic, ut labore maxime saepe cupiditate similique asperiores, iste vel
+          officiis dolor repellat placeat soluta distinctio!
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
+          excepturi quod at, recusandae sed hic, ut labore maxime saepe
+          cupiditate similique asperiores, iste vel officiis dolor repellat
+          placeat soluta distinctio!
+        </p>
+        <div class="fleche droite"></div>
+      </section>
+      <section class="graphc">
+        <div>
+            <h2>STATS</h2>
+            <div class="flexbox">
+                <svg viewbox="-25 -185 330 210" width="63.75vw" height="75vh" >
+                    <defs>
+                        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="3" markerHeight="3" orient="auto">
+                            <path d="M 0 0 L 10 5 L 0 10 z" />
+                        </marker>
+                    </defs>
+                    <g class="valeurs"></g>
+                    <g class="graph"></g>
+                    <line x1="0" y1="0" x2="302" y2="0" stroke="black" marker-end="url(#arrow)"></line>
+                    <line x1="0" y1="0.5" x2="0" y2="-172" stroke="black" marker-end="url(#arrow)"></line>
                 </svg>
                 <section class="universite"></section>
-              </div>
-              <select name="trophy" id="trophy">
-                <option value="0" selected="selected">Première places</option>
-                <option value="1">Podium</option>
-              </select>
-              <script src="./d3.v7.min.js"></script>
-              <script src="./script.js"></script>
             </div>
-          </section>
-</main>
+            <select name="trophy" id="trophy">
+                <option value="0" selected="selected">Première places</option>
+                <option value="1" >Podium</option>
+            </select>
+        </div>
+    </section>
+    </main>
 
-      <footer style="scroll-snap-align: end">
-        <div></div>
-        <div class="gradient"></div>
-        <div class="G" style="height: 155vh"></div>
-        <div class="D" style="height: 155vh"></div>
-      </footer>
+    <footer>
+      <div></div>
+      <div class="gradient"></div>
+      <div class="G"></div>
+      <div class="D"></div>
+    </footer>
     <script src="./d3.v7.min.js"></script>
     <script src="./script.js"></script>
   </body>
