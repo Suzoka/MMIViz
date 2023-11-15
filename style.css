@@ -146,6 +146,7 @@ main{
 svg {
     display: block;
     background-color: #4D3C778c;
+
 }
 
 section.universite {
@@ -163,8 +164,9 @@ section.universite p {
 
 .universite p::before{
     content: "";
-    width: 15px;
-    height: 15px;
+
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     background-color: var(--color);
     display: inline-block;
