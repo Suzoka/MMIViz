@@ -220,11 +220,38 @@ footer{
     display: flex;
     justify-content: space-around;
     margin-top: -80vh;
-    z-index: -1;
     background-color: #3F1D38;
     height: 155vh;
     overflow: hidden;
+    position: relative;
 }
+
+.content{
+    max-width: 1500px;
+    position: absolute;
+    top: 85vh;
+    left: 50px;
+    font-family: 'Khula', sans-serif;
+    color: white;
+}
+
+.content h2{
+    margin: 0;
+}
+
+.content a{
+    color: white;
+}
+
+.content a:hover{
+    text-decoration: none;
+}
+
+.colonnes{
+    column-count: 2;
+    column-gap: 50px;
+}
+
 .gradient{
     position: absolute;
     width: 100%;
