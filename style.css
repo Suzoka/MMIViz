@@ -297,6 +297,30 @@ footer .G, footer .D {
     margin-right: auto;
     margin-left: auto;
   }
+
+  .infoBulle {
+    position : fixed;
+    z-index: 100000;
+    padding: 5px 15px;
+    border-radius: 15px;
+    background-color: white;
+  }
+
+  .infoBulle::before{
+    content: '';
+    width: 0; 
+    height: 0; 
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent; 
+    border-right:15px solid white;
+    position: absolute;
+    left: -10px;
+    top: 4px;
+  }
+
+  .bold{
+    font-weight: bold;
+  }
   
   @media screen and (max-width : 1024px){
     .popup{
