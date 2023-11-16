@@ -169,7 +169,7 @@ svg {
 
 section.universite {
     width: 21.25vw;
-    height: 70vh;
+    height: 67.5vh;
     overflow-y: scroll;
     background-color: #4D3C778c;
 }
@@ -208,6 +208,9 @@ section.universite p {
     flex-direction: column;
     width: fit-content;
     height: 100%;
+}
+
+.flexbox .flexbox {
     justify-content: space-between;
 }
 
@@ -215,12 +218,17 @@ select{
     background-color: #4D3C778c;
     color: white;
     border: none;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 400;
     padding: 0;
     margin: 0;
-    width: 100%;
 }
+
+label{
+    color: white;
+    font-size: 1.2rem;
+}
+
 footer{
     display: flex;
     justify-content: space-around;
