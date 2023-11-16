@@ -321,7 +321,6 @@ function infoBulle(event, infos) {
     }
 
     function getTexte(infos) {
-        // console.log(infos._groups[event.target.id-2015])
         if (podiumFlag) {
             let first;
             let second;
