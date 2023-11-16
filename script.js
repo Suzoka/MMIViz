@@ -75,7 +75,7 @@ function graphique(gagnants) {
     setTimeout(function () {
         barre.select('rect').transition().duration(600).attr('height', dataU => dataU.charts[3] * (160 / echelle.valeurs[cas].length))
         barre.select("circle").transition().duration(600).attr('cy', dataU => dataU.charts[3] * (160 / echelle.valeurs[cas].length))
-        setTimeout(function () { podiumFlag = false; }, 600)
+        setTimeout(function () { podiumFlag = false; updateTitre();}, 600)
     }, 10);
 
     barre.on('mouseenter', function (event, dataU) {
@@ -161,6 +161,7 @@ function tracePodium(univ, data) {
     data.forEach(function (anneeData) {
         anneeData.result.forEach(function (resultat) {
             if (resultat.university.replaceAll(' ', '').replaceAll('é', 'e').replaceAll('ê', 'e').replaceAll('ô', 'o').toLowerCase() == univ) {
+                updateTitre(resultat.university);
                 podium.push(resultat);
             }
         });
@@ -217,7 +218,6 @@ function tracePodium(univ, data) {
             }
         })
 
-    console.log(annee)
     annee.on('mouseenter', function (event) {
         infoBulle(event, barrePodium);
     });
@@ -359,6 +359,22 @@ function infoBulle(event, infos) {
             else {
                 return ("L'université à remportée <span class=\"bold\">" + valeur + "</span> trophées toutes places confondues")
             }
+        }
+    }
+}
+
+function updateTitre(univ) {
+    const titre = document.querySelector('.titreGraph');
+    if (podiumFlag){
+        console.log(univ)
+        titre.innerHTML = "Nombre de trophées gagnés par "+ univ +" par années";
+    }
+    else {
+        if (document.querySelector('select[name="trophy"]').value == 0) {
+            titre.innerHTML = "Universités ayant gagné le plus de premières places par années";
+        }
+        else {
+            titre.innerHTML = "Universités ayant gagné le plus de trophées, toutes places confondus, par années";
         }
     }
 }
