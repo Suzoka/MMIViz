@@ -94,12 +94,12 @@ function graphique(gagnants) {
         .attr('height', (dataU, i, dataG) => (300 / 9 - 5) / dataG.length / 2)
         .attr('fill', dataU => dataU.color)
 
-    //Création du cercle contenant les logos des universités
+    //Arrondir le bout des barres
     barre.append('circle')
         .attr('cx', (dataU, i, dataG) => (300 / 9 - 5) / dataG.length / 2)
         .attr('cy', (dataU, i, dataG) => (300 / 9 - 5) / dataG.length / 2)
         .attr('r', (dataU, i, dataG) => (300 / 9 - 5) / dataG.length / 2)
-        .attr('fill', 'white')
+        .attr('fill', (dataU) => dataU.color)
 
     //Animation des barres jusqu'à la bonne valeur
     setTimeout(function () {
