@@ -6,6 +6,39 @@ box-sizing: border-box;
 :root{
     --out: #A2678A;
 }
+
+@font-face {
+    font-family: 'Khula';
+    src:url('./sources/font/Khula-Regular.woff2') format('woff2'),
+        url('./sources/font/Khula-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Khula';
+    src:url('./sources/font/Khula-Bold.woff2') format('woff2'),
+        url('./sources/font/Khula-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Kavoon';
+    src:url('./sources/font/Kavoon-Regular.woff2') format('woff2'),
+        url('./sources/font/Kavoon-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    src:url('./sources/font/PlayfairDisplay-Regular.woff2') format('woff2'),
+        url('./sources/font/PlayfairDisplay-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html{
     background-color: #E19898;
     scroll-behavior: smooth;
