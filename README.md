@@ -20,6 +20,8 @@ Nous vous souhaitons un bon data-visionnage !
 - D3.js
 
 ## Mentions légales
+©Morgan ZARKA & Waldi FIAGA
+
 Ce site à été créée et édité par Morgan ZARKA (morgan.zarka@edu.univ-eiffel.fr) et Waldi FIAGA (waldi.fiaga@edu.univ-eiffel.fr).
 
 Il est hébergé sur les serveurs de GitHub, via l’outil GitHub pages (PRIUS BERNHARDPLEIN 200 99135 PAYS BAS)
