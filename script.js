@@ -370,7 +370,6 @@ function popup() {
 
 //Fonction pour afficher une infobulle
 function infoBulle(event, infos) {
-
     //Si l'infobulle n'existe pas, la créer
     if (!document.querySelector('.infoBulle')) {
         var infoBulle = document.createElement('div');
@@ -387,7 +386,7 @@ function infoBulle(event, infos) {
     //Tester le style de graphique
     if (!podiumFlag) {
         //Afficher l'infobulle avec les informations de la barre survolée
-        bulle.innerHTML = "<h3>" + infos.university + "</h3><p>Année : " + event.toElement.parentElement.id + "</p>" + getTexte(infos) + "</p>";
+        bulle.innerHTML = "<h3>" + infos.university + "</h3><p>Année : " + event.target.parentElement.id + "</p>" + getTexte(infos) + "</p>";
         bulle.style.display = 'block'
         //Positionner l'infobulle à la position de la souris
         event.currentTarget.onmousemove = function (event) {
@@ -461,7 +460,6 @@ function updateTitre(univ) {
     const titre = document.querySelector('.titreGraph');
     //Test le type de graphique
     if (podiumFlag){
-        console.log(univ)
         titre.innerHTML = "Nombre de trophées gagnés par "+ univ +" par années";
     }
     else {
